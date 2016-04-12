@@ -104,5 +104,16 @@ The important features for single family houses and condos are shown as below:
 
 ![](plot3.png)
 
-As we can see, 
+As we can see, beside the size of the houses neighborhood, built year and the interaction term between the size and room of the house 
+are also very important for both single family houses and condos. Neighborhood plays a really important part in the single family houses
+but less important for condos. 
+
+##Future
+It is obvious that some of the important features were not included in my model, such as kitchen, pool, style of the house.
+With more features and more data, better prediction can be made.
+
+Forecasting is very important for the real estate market. 
+By combining economic data, it is possible to give a forecasting of the price in the future.
+
+
 
