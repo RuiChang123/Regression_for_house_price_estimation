@@ -13,23 +13,13 @@ import time
 def loadPage(url):
 
     page = QWebPage()
-    loop = QEventLoop() # Create event loop
-    page.mainFrame().loadFinished.connect(loop.quit) # Connect loadFinished to loop quit
+    loop = QEventLoop() 
+    page.mainFrame().loadFinished.connect(loop.quit)
     page.mainFrame().load(QUrl(url))
-    loop.exec_() # Run event loop, it will end on loadFinished
+    loop.exec_() 
     return page.mainFrame().toHtml()
 
 app = QApplication(sys.argv)
-
-# urls = ['https://google.com', 'http://reddit.com', 'http://wikipedia.org']
-# for url in urls:
-#     print '-----------------------------------------------------'
-#     print 'Loading ' + url
-#     html = loadPage(url)
-#     #print html
-#     soup = BeautifulSoup(html)
-
-#r = requests.get(url, proxies=proxyDict)
 
 for i in range(1,13): 
     #url = """http://www.sfgate.com/webdb/homesales/?appSession=62394121042939095974604243804125972115667225306241842463756579389539619617572902719647069617948654518042925562712294167607160157&RecordID=&PageID=2&PrevPageID=1&cpipage=""" +str(i)+'&CPISortType=&CPIorderBy='
