@@ -1,0 +1,307 @@
+<html>
+<head>
+	<title>Housing</title>
+	<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<!-- <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+
+	<script>
+				function showValue(newValue)
+			{
+				document.getElementById("test").innerHTML=newValue;
+			}
+
+				function showValue1(newValue)
+			{
+				document.getElementById("test1").innerHTML=newValue;
+			}
+	</script>
+	<style>
+		.scrollable-menu {
+		    height: auto;
+		    max-height: 200px;
+		    overflow-x: hidden;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- title div -->
+	<div style="position: absolute; top: 0px; left: 0px; width: 1500px; height: 100px; background-color: #203B7C;">
+		<h1 style='color:white; font-size:3em; font-family:lato; margin-left:20px;'>House Price Estimator</h1>
+		
+	</div>
+
+	<div style="position: absolute; top: 100px; left: 0px; width: 400px; height: 50px; background-color: white">
+		
+		<h2 align="center" style='font-family:lato; font-size:1.5em;color:#2755C1;'>Please Enter House Features</h2>
+	</div>
+
+	<div style="position: absolute; top: 150px; left: 0px; width: 200px; height: 300px; background-color: white">
+        <h3 align="center" style='font-family:lato; font-size:1.2em;'>Finished Square Foot</h3>
+        <div display: "block" align="center">
+        	<input align="center" type="range" id="finishedsqft" name="finishedsqft" min="300" max="5000" value="240" onchange="showValue(this.value);"> 
+        	<span id="test" style='font-family:lato; font-size:1.5em;'>300</span>                                                      
+        </div>
+
+        <div display: "block" align="center">
+        	<h3 align="center" style='font-family:lato; font-size:1.2em;'>Lot Square Foot</h3>
+        	<input align="center" type="range" id="lot_size" name="lot_size" min="0" max="5000" value="0" onchange="showValue1(this.value);"> 
+        	<span id="test1" style='font-family:lato; font-size:1.5em;'>0</span>  
+        </div>
+
+        <h3 align="center" style='font-family:lato; font-size:1.2em;'>Year Built</h3>
+        <div display: "block" align="center">
+        	<input align="centre" type="value" id="history" style='width:120px; font-size:1em;'>
+        </div>
+
+        <h3 align="center" style='font-family:lato; font-size:1.2em;'>Usecode</h3>
+        <div align="center">
+        	<select name="mydropdown" id="usecode" style="width:120px; font-size:1em; font-family:lato;">
+				<option value="SingleFamily">Single Family</option>
+				<option value="Condominium">Condominium</option>
+			</select>
+		</div>
+    </div>
+
+    <div style="position: absolute; top: 150px; left: 230px; width: 200px; height: 300px; background-color: white">
+
+    	<h3 align="center" style='font-family:lato; font-size:1.2em;'>Number of Bedrooms</h3>
+    	<div display: "block" align="center">
+        	<input align="centre" type="value" id="bedrooms" style='width:120px; font-size:1em;'>
+        </div>
+        <h3 align="center" style='font-family:lato; font-size:1.2em;'>Number of Bathrooms</h3>
+        <div display: "block" align="center">
+        	<input align="center" type="value" id="bathrooms" style='width:120px; font-size:1em;'>
+        </div>
+
+        <h3 align="center" style='font-family:lato; font-size:1.2em;'>Number of Rooms</h3>
+        <div display: "block" align="center">
+        	<input align="center" type="value" id="rooms" style='width:120px; font-size:1em; font-family:lato;'>
+        </div>
+
+		<h3 align="center" style='font-family:lato; font-size:1.2em;'>Neighborhood</h3>
+<!--         <input type="text" id="neighborhood">  -->
+		<!-- <input list="neighborhood_list" id="neighborhood"> -->
+		<div align="center" style='font-family:lato; font-size:1.5em;'>
+			<select name="mydropdown" id="neighborhood" style="width:120px; font-size:1em; font-family:lato;">
+			<option value="South of Market">South of Market</option>
+			<option value="Bayview">Bayview</option>
+			<option value="Buena Vista Park">Buena Vista Park</option>
+			<option value="Central Richmond">Central Richmond</option>
+		    <option value="Central Sunset">Central Sunset</option>
+		    <option value="Central Waterfront - Dogpatch">Central Waterfront - Dogpatch</option>
+		    <option value="Corona Heights">Corona Heights</option>
+		    <option value="Cow Hollow">Cow Hollow</option>
+		    <option value="Crocker Amazon">Crocker Amazon</option>
+		    <option value="Daly City">Daly City</option>
+		    <option value="Diamond Heights">Diamond Heights</option>
+		    <option value="Downtown">Downtown</option>
+		    <option value="Eureka Valley - Dolores Heights - Castro">Eureka Valley - Dolores Heights - Castro</option>
+		    <option value="Excelsior">Excelsior</option>
+		    <option value="Forest Hill">Forest Hill</option>
+		    <option value="Forest Hill Extension">Forest Hill Extension</option>
+		    <option value="Glen Park">Glen Park</option>
+		    <option value="Golden Gate Heights">Golden Gate Heights</option>
+		    <option value="Haight-Ashbury">Haight-Ashbury</option>
+		    <option value="Hayes Valley">Hayes Valley</option>
+		    <option value="Ingleside">Ingleside</option>
+		    <option value="Ingleside Heights">Ingleside Heights</option>
+		    <option value="Ingleside Terrace">Ingleside Terrace</option>
+		    <option value="Inner Parkside">Inner Parkside</option>
+		    <option value="Inner Richmond">Inner Richmond</option>
+		    <option value="Inner Sunset">Inner Sunset</option>
+		    <option value="Lake">Lake</option>
+		    <option value="Lakeshore">Lakeshore</option>
+		    <option value="Lakeside">Lakeside</option>
+		    <option value="Little Hollywood">Little Hollywood</option>
+		    <option value="Lone Mountain">Lone Mountain</option>
+		    <option value="Lower Pacific Heights">Lower Pacific Heights</option>
+		    <option value="Marina">Marina</option>
+		    <option value="Merced Heights">Merced Heights</option>
+		    <option value="Midtown Terrace">Midtown Terrace</option>
+		    <option value="Miraloma Park">Miraloma Park</option>
+		    <option value="Mission">Mission</option>
+		    <option value="Mission Terrace">Mission Terrace</option>
+		    <option value="Mount Davidson Manor">Mount Davidson Manor</option>
+		    <option value="Nob Hill">Nob Hill</option>
+		    <option value="Noe Valley">Noe Valley</option>
+		    <option value="North Beach">North Beach</option>
+		    <option value="North Panhandle">North Panhandle</option>
+		    <option value="North Waterfront">North Waterfront</option>
+		    <option value="Oceanview">Oceanview</option>
+		    <option value="Outer Mission">Outer Mission</option>
+		    <option value="Outer Parkside">Outer Parkside</option>
+		    <option value="Outer Richmond">Outer Richmond</option>
+		    <option value="Outer Sunset">Outer Sunset</option>
+		    <option value="Pacific Heights">Pacific Heights</option>
+		    <option value="Parkside">Parkside</option>
+		    <option value="Parnassus - Ashbury">Parnassus - Ashbury</option>
+		    <option value="Portola">Portola</option>
+		    <option value="Potrero Hill">Potrero Hill</option>
+		    <option value="Presidio Heights">Presidio Heights</option>
+		    <option value="Russian Hill">Russian Hill</option>
+		    <option value="Sea Cliff">Sea Cliff</option>
+		    <option value="Silver Terrace">Silver Terrace</option>
+		    <option value="South Beach">South Beach</option>
+		    <option value="South of Market">South of Market</option>
+		    <option value="St. Francis Wood">St. Francis Wood</option>
+		    <option value="Sunnyside">Sunnyside</option>
+		    <option value="Telegraph Hill">Telegraph Hill</option>
+		    <option value="Twin Peaks">Twin Peaks</option>
+		    <option value="Van Ness - Civic Center">Van Ness - Civic Center</option>
+		    <option value="Visitacion Valley">Visitacion Valley</option>
+		    <option value="West Portal">West Portal</option>
+		    <option value="Western Addition">Western Addition</option>
+		    <option value="Westwood Highlands">Westwood Highlands</option>
+		    <option value="Westwood Park">Westwood Park</option>
+		    <option value="Yerba Buena">Yerba Buena</option>
+			</select>
+			<p></p>
+			<button type="button" id="submit" style="font-size:1em; font-family:lato;">Submit</button>
+		</div>
+	</div>
+
+<!-- 	<div style="position: absolute; top: 100px; left: 500px; width: 800px; height: 380px; background-color: white;">
+		<img style="width: 800px; height: 380px;" src="http://www.signspecialist.com/decals/beevault/images/Houses%20Homes%20Buildings%20053-0215.gif"/>
+	</div> -->
+
+	<div style="position: absolute; top: 150px; left: 630px; width: 600px; height: 70px; background-color: white;">
+    	<h2 align="centre" style='font-family:lato; text-align:left;float:left;' id="Estimated_Price"></h2>
+    	<h2 align="centre" style='font-family:lato; text-align:left;float:left; color:#2755C1;' id="estimation"></h2>
+	</div>
+
+	<div style="position: absolute; top: 210px; left: 630px; width: 600px; height: 70px; background-color: white;">
+		<h2 align="centre" style='font-family:lato; text-align:left;float:left;' id="Estimated_Range"></h2>
+		<h2 align="centre" style='font-family:lato; text-align:left;float:left; color:#2755C1;' id="estimated_range"></h2>
+	</div>
+
+<!-- 	<div style="position: absolute; top: 150px; left: 800px; width: 200px; height: 100px; background-color: purple;">
+		<p></p>
+		<h2 id="estimation"></h2>
+	</div> -->
+
+<!-- 	<div style="position: absolute; top: 300px; left: 800px; width: 200px; height: 100px; background-color: purple;">
+		<p></p>
+		<h2 id="estimated_range"></h2>
+	</div> -->
+
+	<div style="position: absolute; top: 550px; left: 470px; width: 280px; height: 200px; background-color: white;">
+		<p id="address1" style='font-family:lato; font-size:0.9em;'></p>
+		<p id='price1' style='font-family:lato; font-size:0.9em;'></p>
+		<p id='date1' style='font-family:lato;font-size:0.9em;'></p>
+	</div>
+
+	<div style="position: absolute; top: 550px; left: 770px; width: 280px; height: 200px; background-color: white;">
+		<p id="address2" style='font-family:lato; font-size:0.9em;'></p>
+		<p id='price2' style='font-family:lato; font-size:0.9em;'></p>
+		<p id='date2' style='font-family:lato; font-size:0.9em;'></p>
+	</div>
+
+	<div style="position: absolute; top: 550px; left: 1070px; width: 280px; height: 200px; background-color: white;">
+		<p id="address3" style='font-family:lato; font-size:0.9em;'></p>
+		<p id='price3' style='font-family:lato; font-size:0.9em;'></p>
+		<p id='date3' style='font-family:lato; font-size:0.9em;'></p>
+	</div> 
+
+	<div style="position: absolute; top: 290px; left: 680px; width: 500px; height: 70px; background-color: white;">
+		<h2 id="words" style='font-family:lato; font-size:1.5em;'></h2>
+	</div>
+
+	<div class="div_imagetranscrits1" style="position: absolute; top: 360px; left: 470px; width: 250px; height: 200px; background-color: white">
+	</div>
+
+	<div class="div_imagetranscrits2" style="position: absolute; top: 360px; left: 770px; width: 250px; height: 200px; background-color: white">
+	</div>
+
+	<div class="div_imagetranscrits3" style="position: absolute; top: 360px; left: 1070px; width: 250px; height: 200px; background-color: white">
+	</div>
+
+	<script>
+		function get_prediction(finishedsqft, lot_size, history, bedrooms, bathrooms, rooms, neighborhood, usecode){
+
+			$.ajax({
+			         type: "POST",
+			         contentType: "application/json; charset=utf-8",
+			         url: "/predict",
+			         dataType: "json",
+			         async: true,
+			         data: "{\"features\": ["+finishedsqft+","+lot_size+","+history+","+bedrooms+","+bathrooms+","+rooms+","+"\""+neighborhood+"\""+","+"\""+usecode+"\""+"]}",
+			         success: function (data) {
+			         	console.log(data)
+			         	var estimation = $('#estimation');
+					    estimation.text(data['estimation']);
+
+					    var address1 = $('#address1');
+					    address1.text(data['address'][0]);
+
+					    var address2 = $('#address2');
+					    address2.text(data['address'][1]);
+
+					    var address3 = $('#address3');
+					    address3.text(data['address'][2]);
+
+					    var price1 = $('#price1');
+					    price1.text(data['price'][0]);
+
+					    var price2 = $('#price2');
+					    price2.text(data['price'][1]);
+
+					    var price3 = $('#price3');
+					    price3.text(data['price'][2]);
+
+					    var date1 = $('#date1');
+					    date1.text(data['date'][0]);
+
+					    var date2 = $('#date2');
+					    date2.text(data['date'][1]);
+
+					    var date3 = $('#date3');
+					    date3.text(data['date'][2]);
+
+					    var estimated_range = $('#estimated_range');
+					    estimated_range.text(data['estimated_range']);
+
+
+					    $('.div_imagetranscrits1').html('<img src="'+data['pic'][0]+'" height=200px width=250px/>');
+					    $('.div_imagetranscrits2').html('<img src="'+data['pic'][1]+'" height=200px width=250px/>');
+					    $('.div_imagetranscrits3').html('<img src="'+data['pic'][2]+'" height=200px width=250px/>');
+
+					    var words = $('#words');
+					    words.text(data['words']);
+
+					    var Estimated_Price = $('#Estimated_Price');
+					    Estimated_Price.text('Estimated Price: ');
+
+					    var Estimated_Range = $('#Estimated_Range');
+					    Estimated_Range.text('Estimated Range: '); 
+			         
+			         },
+			         error: function (result) {
+			         }
+			       })
+		}
+
+
+		$("button#submit").on('click', function() {
+
+			var bathrooms = $("#bathrooms").val();
+		    var bedrooms = $("#bedrooms").val();
+		    var neighborhood = $('#neighborhood').val();
+		    var finishedsqft = $('#finishedsqft').val();
+		    var lot_size = $('#lot_size').val();
+		    var history = $('#history').val();
+		    var usecode = $('#usecode').val();
+		    var rooms = $('#rooms').val();
+
+		    console.log("{\"features\": ["+finishedsqft+","+lot_size+","+history+","+bedrooms+","+bathrooms+","+rooms+","+"\""+neighborhood+"\""+","+"\""+usecode+"\""+"]}")
+
+			get_prediction(finishedsqft, lot_size, history, bedrooms, bathrooms, rooms, neighborhood, usecode);
+
+		});
+	</script>
+		
+	<!-- <script src='script.js'></script> -->
+	</body>
+</html>
