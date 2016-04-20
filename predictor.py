@@ -80,10 +80,10 @@ def predict():
 	d['lot_finish'] = d['lot_sqft'] / d['finishedsqft']
 	D = pd.DataFrame(d,index=[0])
 
-	df = pd.read_csv("/Users/ruichang/ds/metis/project5/website/final_data.csv")
+	df = pd.read_csv("final_data.csv")
 
 	if x[-1] == "SingleFamily":
-	    df_sf = pd.read_csv('/Users/ruichang/ds/metis/project5/singlefamily.csv')
+	    df_sf = df[df.usecode == 'singlefamily.csv']
 	    X = df_sf[['bathrooms','bedrooms','finishedsqft','totalrooms','finishedsqft_rooms','bed_bath','history','lot_sqft','lot_finish'
 	             ]]
 	    Y = df_sf['adjusted_price_m']
@@ -97,7 +97,7 @@ def predict():
 	          'group1','group2','group3']]
 	    pred = model_rf.predict(D_sf)
 	else:
-	    df_condo = pd.read_csv('/Users/ruichang/ds/metis/project5/condo.csv')
+	    df_condo = df[df.usecode == 'condo.csv']
 	    X = df_condo[['bathrooms','bedrooms','finishedsqft','finishedsqft_rooms','bathbed','history','lot_finish','finishedsqftrooms'
 	          ]]
 	    Y = df_condo['adjusted_price_m']
